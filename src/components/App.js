@@ -1,6 +1,11 @@
+import Container from 'components/Container'
+import Navigation from 'components/Navigation'
+
 const App = () => {
   return (
-    <div>Hello!!!</div>
+    <Container>
+      <Navigation/>
+    </Container>
   )
 }
 
