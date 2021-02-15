@@ -1,15 +1,15 @@
 const main = {
-    mobile: '480px',
-    tablet: '768px',
-    decktop: '1200px'
-}
+    mobile: 480,
+    tablet: 768,
+    decktop: 1200
+};
 
 const secondary = {
-    mobile: '480px',
-    tablet: '767px',
-    decktop: '1199px'
-}
+    mobile: 480,
+    tablet: 767,
+    decktop: 1199
+};
 
-const size ={main, secondary}
+const breakpoints = { main, secondary };
 
-export {size}
+export { breakpoints };

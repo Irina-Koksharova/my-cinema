@@ -1,10 +1,11 @@
-import Container from 'components/Container'
-import Navigation from 'components/Navigation'
+import Container from 'components/Container';
+import Header from 'components/Header';
 
 const App = () => {
+    
   return (
     <Container>
-      <Navigation/>
+      <Header />
     </Container>
   )
 }

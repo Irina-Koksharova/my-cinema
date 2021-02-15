@@ -1,5 +1,5 @@
 import { navigationLinks } from 'initialValues/navigationLinks';
-import {ListStyled, StyledLink} from './Navigation.styled'
+import { ListStyled, StyledLink } from './Navigation.styled';
 
 const Navigation = () => {
   return (
