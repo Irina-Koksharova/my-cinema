@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { OverlayStyled, ModalStyled } from './Modal.styled';
 
 const menuModalRoot = document.querySelector('#root-menuModal');
 
 const Modal = ({ children, onClose }) => {
+  
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
@@ -24,11 +26,11 @@ const Modal = ({ children, onClose }) => {
   };
 
   return createPortal(
-    <div onClick={handleBackdropClick}>
-      <div>{children}</div>
-    </div>,
-    menuModalRoot,
+    <OverlayStyled onClick={handleBackdropClick}>
+      <ModalStyled >{children}</ModalStyled>
+    </OverlayStyled>,
+    menuModalRoot
   );
 };
-
+  
 export default Modal;

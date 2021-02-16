@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { breakpoints } from 'styles/variables';
-
 const { main } = breakpoints;
 
 const HeaderStyled = styled.header`

@@ -1,10 +1,9 @@
 import { useContext } from 'react';
-import { FcMenu } from 'react-icons/fc';
 import { HeaderStyled } from './Header.styled';
 import { breakpoints } from 'styles/variables';
-import sizeContext from 'components/SizeContext/context';
-import IconButton from 'components/IconButton';
-import Navigation from 'components/Navigation'
+import sizeContext from 'context/SizeContext/context';
+import AppBar from 'components/AppBar';
+import Navigation from 'components/Navigation';
 
 const Header = () => {
     const { width } = useContext(sizeContext);
@@ -12,13 +11,9 @@ const Header = () => {
 
     return (
         <HeaderStyled>
-            {width <= secondary.tablet
-                ? <IconButton
-                    aria-label='Открыть меню'
-                    ><FcMenu /></IconButton>
-                : <Navigation/>}
+            {width <= secondary.tablet ? <AppBar /> : <Navigation />}
         </HeaderStyled>
     )
 }
-    
+            
 export default Header;

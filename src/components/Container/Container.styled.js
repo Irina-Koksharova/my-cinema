@@ -5,7 +5,6 @@ const { main, secondary } = breakpoints;
 
 const ContainerStyled = styled.div`
 margin: 0px auto;
-padding: 15px;
 
     @media screen and (max-width: ${secondary.tablet}px) {
 		max-width: ${main.mobile}px;
@@ -13,6 +12,7 @@ padding: 15px;
 
     @media screen and (min-width: ${main.tablet}px) {
 		width: ${main.tablet}px;
+		padding: 15px;
 	}
 
     @media screen and (min-width: ${main.decktop}px) {
