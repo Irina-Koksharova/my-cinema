@@ -10,7 +10,7 @@ import IconButton from 'components/IconButton';
 
 const Header = () => {
     const { width } = useContext(sizeContext);
-    const { isOpen, toggleMenu } = useContext(menuContext);
+    const { toggleMenu } = useContext(menuContext);
     const { secondary } = breakpoints;
         
     return (
@@ -23,7 +23,7 @@ const Header = () => {
                     >
                         <FcMenu size={'2em'} />
                     </IconButton>
-                    {isOpen && <UserMenu />}
+                    <UserMenu />
                 </>
                 : <Navigation />}
         </HeaderStyled>        
