@@ -1,6 +1,6 @@
 import { useEffect, useRef, useContext } from 'react';
 import { Transition } from 'react-transition-group';
-import { GrClose } from 'react-icons/gr';
+import { IoMdClose } from 'react-icons/io';
 import { UserMenuStyled } from './UserMenu.styled';
 import { menuContext } from 'context/menu/MenuContextProvider';
 import IconButton from 'components/IconButton';
@@ -30,7 +30,7 @@ const UserMenu = ({children}) => {
             aria-label='Закрыть меню'
             onClick={toggleMenu}
           >
-            <GrClose size={'2em'} />
+            <IoMdClose size={'2em'} color={'rgb(85, 83, 83)'}/>
           </IconButton>
           {children}
         </UserMenuStyled> 

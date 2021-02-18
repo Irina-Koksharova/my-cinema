@@ -1,19 +1,23 @@
+import { useContext } from 'react';
 import { navigationLinks } from 'initialValues/navigationLinks';
-import { ListStyled, StyledLink } from './Navigation.styled';
+import { NavStyled, ListStyled, StyledLink } from './Navigation.styled';
+import { menuContext } from 'context/menu/MenuContextProvider';
 
-const Navigation = ({onClick}) => {
+const Navigation = () => {
+  const { toggleMenu } = useContext(menuContext)
+
   return (
-    <nav>
+    <NavStyled>
       <ListStyled>
         {navigationLinks.map(({ name, link }) => (
           <li key={name}>
-                <StyledLink exact to={link} onClick={onClick}>
+                <StyledLink exact to={link} onClick={toggleMenu}>
                     {name}
                 </StyledLink>
           </li>
         ))}
       </ListStyled>
-    </nav>
+    </NavStyled>
   );
 };
 

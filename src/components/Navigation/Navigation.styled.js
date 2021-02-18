@@ -2,21 +2,28 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { breakpoints } from 'styles/variables';
 
-const {main} = breakpoints 
+const { main } = breakpoints 
+
+const NavStyled = styled.nav`
+align-self: flex-start;
+`;
 
 const ListStyled = styled.ul`
-  display: flex;
-  align-items: center;
   text-transform: capitalize;
-`
+
+  @media screen and (min-width: ${main.tablet}px) {
+	  display: flex;
+    align-items: center;
+	}
+`;
 
 const StyledLink = styled(NavLink)`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   min-width: 150px;
   padding: 15px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   text-transform: capitalize;
   color: rgb(85, 83, 83);  
@@ -34,4 +41,4 @@ StyledLink.defaultProps = {
     activeClassName: 'active',
 };
 
-export {ListStyled, StyledLink};
+export { NavStyled, ListStyled, StyledLink };

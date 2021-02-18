@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
-const UserMenuStyled = styled.nav`
+const UserMenuStyled = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  width: 65%;
-  height: 85%;
-  padding: 100px 30px 30px;
+  width: 55%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10px;
   background-color: #fff;
+  border-radius: 4px;
   z-index: 2;
   
   transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);

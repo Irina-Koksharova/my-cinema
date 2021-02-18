@@ -4,7 +4,7 @@ const { main } = breakpoints;
 
 const HeaderStyled = styled.header`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   min-height: 60px;
@@ -17,4 +17,12 @@ const HeaderStyled = styled.header`
   justify-content: flex-start;
 `;
 
-export { HeaderStyled };
+const LinkStyled = styled.a`
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(248, 100, 14);
+  text-transform: capitalize;
+`;
+
+export { LinkStyled, HeaderStyled };
