@@ -1,5 +1,5 @@
 import Container from 'components/Container';
-import MenuProvider from 'context/MenuContext/MenuContextProvider';
+import {MenuProvider} from 'context/menu/MenuContextProvider';
 import Header from 'components/Header';
 
 const App = () => {

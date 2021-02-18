@@ -1,12 +1,12 @@
 import { useEffect, useRef, useContext } from 'react';
 import { GrClose } from 'react-icons/gr';
 import { UserMenuStyled } from './UserMenu.styled';
-import context from 'context/MenuContext/context';
+import { menuContext } from 'context/menu/MenuContextProvider';
 import IconButton from 'components/IconButton';
 
 const UserMenu = () => {
   const elRef = useRef();
-  const { isOpen, toggleMenu } = useContext(context);
+  const { isOpen, toggleMenu } = useContext(menuContext);
   
   useEffect(() => {
     const listener = e => {
