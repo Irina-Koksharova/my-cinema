@@ -8,7 +8,7 @@ import Header from 'components/Header';
 import Spinner from 'components/Spinner';
 
 const HomePage = lazy(() =>
-  import('views/HomePage.jsx' /* webpackChunkName: "home-page" */),
+  import('views/HomePage/HomePage.jsx' /* webpackChunkName: "home-page" */),
 );
 
 const MoviesPage = lazy(() =>

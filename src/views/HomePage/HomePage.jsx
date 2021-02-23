@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import { MdArrowUpward } from 'react-icons/md';
 import { fetchTrendingShow } from 'services/api-movies';
 import { scrollTo } from 'services/scroll';
 import { options } from 'initialValues/selectorValues';
 import { serverError } from 'services/notification/notification';
+import { ButtonStyled } from './HomePage.styled';
 import Main from 'components/Main';
 import Spinner from 'components/Spinner';
 import Notification from 'components/Notification';
 import Title from 'components/Title';
 import SortSelector from 'components/SortSelector';
 import MoviesList from 'components/MoviesList';
+import IconButton from 'components/IconButton';
 import Footer from 'components/Footer';
 
 const HomePage = () => {
@@ -67,7 +70,19 @@ const HomePage = () => {
         {isLoading && <Spinner />}
         {isError && <Notification message={serverError} />}
         {isSuccess && 
-          (data.results && <MoviesList movies={data.results} />)
+          (data.results && (
+          <>
+            <MoviesList movies={data.results} />
+            <ButtonStyled>
+              <IconButton
+              aria-label='Вверх'
+              onClick={scrollTo}
+            >
+              <MdArrowUpward size={'2em'} color={'rgb(248, 100, 14)'} />
+            </IconButton>
+            </ButtonStyled>
+          </>
+          ))
         }
       </Main>
       {isSuccess && (
