@@ -30,7 +30,7 @@ const Header = () => {
             {width <= secondary.tablet
                 ? <>
                     <LinkStyled
-                        href={location.pathname}
+                        href='#'
                         aria-label='Ссылка на текущую страницу'>
                         {currentLocation}
                     </LinkStyled>

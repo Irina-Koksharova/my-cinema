@@ -1,6 +1,6 @@
 import TitleStyled from './Title.styled';
 
-const TitleMain = ({ title }) => {
+const Title = ({ title }) => {
   return (
     <TitleStyled id="title">
       {title}
@@ -8,4 +8,4 @@ const TitleMain = ({ title }) => {
   );
 };
 
-export default TitleMain;
+export default Title;
