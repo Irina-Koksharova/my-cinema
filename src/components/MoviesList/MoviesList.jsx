@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import s from './MoviesList.module.css';
+import { useLocation } from 'react-router-dom';
+import { ListStyled, ItemStyled, LinkStyled } from './MoviesList.styled';
 import MoviesListItem from 'components/MoviesListItem';
 import {
   clientErrorInvalidQuery,
@@ -21,7 +21,7 @@ const MoviesList = ({ movies }) => {
   };
 
   return (
-    <ul className={s.list}>
+    <ListStyled>
       {movies.map(
         ({
           id,
@@ -31,9 +31,8 @@ const MoviesList = ({ movies }) => {
           release_date,
           first_air_date,
         }) => (
-          <li className={s.item} key={id}>
-            <Link
-              className={s.link}
+          <ItemStyled key={id}>
+            <LinkStyled
               to={{
                 pathname: `/${getPathName(original_title)}/${id}`,
                 state: {
@@ -50,11 +49,11 @@ const MoviesList = ({ movies }) => {
                 movieReleaseDate={release_date}
                 tvReleaseDate={first_air_date}
               />
-            </Link>
-          </li>
+            </LinkStyled>
+          </ItemStyled>
         ),
       )}
-    </ul>
+    </ListStyled>
   );
 };
 

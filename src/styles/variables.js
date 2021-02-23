@@ -5,7 +5,7 @@ const main = {
 };
 
 const secondary = {
-    mobile: 480,
+    mobile: 350,
     tablet: 767,
     decktop: 1199
 };

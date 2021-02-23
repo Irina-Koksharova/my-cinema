@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const TitleStyled = styled.h1`
-  margin: 0px 0px 90px;
+  margin: 0;
   text-align: center;
-  font-size: 30px;
-  font-weight: 400;`;
+  font-size: 22px;
+  font-weight: 500;`;
 
 export default TitleStyled;

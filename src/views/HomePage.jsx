@@ -5,12 +5,13 @@ import { fetchTrendingShow } from 'services/api-movies';
 import { scrollTo } from 'services/scroll';
 import { options } from 'initialValues/selectorValues';
 import { serverError } from 'services/notification/notification';
+import Main from 'components/Main';
+import Spinner from 'components/Spinner';
+import Notification from 'components/Notification';
 import Title from 'components/Title';
 import SortSelector from 'components/SortSelector';
 import MoviesList from 'components/MoviesList';
-import PaginationElement from 'components/PaginationElement';
-import Spinner from 'components/Spinner';
-import Notification from 'components/Notification';
+import Footer from 'components/Footer';
 
 const HomePage = () => {
   const [page, setPage] = useState(1);
@@ -51,31 +52,34 @@ const HomePage = () => {
         'selected',
       )}&page=${value}`,
     });
+    scrollTo();
   };
 
-  if (isLoading) return <Spinner />;
-  if (isError) return <Notification message={serverError} />;
-  if (isSuccess) {
-    const { results, total_pages } = data;
-    scrollTo();
-    return (
-      <>
+  return (
+    <>
+      <Main>
         <Title title={'Trending today'} />
         <SortSelector
           options={options}
           value={currentSelector}
           onChange={onChangeSelector}
         />
-        {results && <MoviesList movies={results} />}
-        {total_pages && (
-          <PaginationElement
-            count={total_pages}
+        {isLoading && <Spinner />}
+        {isError && <Notification message={serverError} />}
+        {isSuccess && 
+          (data.results && <MoviesList movies={data.results} />)
+        }
+      </Main>
+      {isSuccess && (
+        data.total_pages && (
+          <Footer
+            count={data.total_pages}
             page={page}
-            onChange={onChangePage}
-          />
-        )}
-      </>
-    );
-  }
+            onChange={onChangePage} />
+        )
+      )}
+    </>
+  )
 };
+
 export default HomePage;

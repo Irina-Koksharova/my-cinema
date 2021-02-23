@@ -10,7 +10,7 @@ import {
 } from 'services/notification/notification';
 import SearchBar from 'components/SearchBar';
 import MoviesList from 'components/MoviesList';
-import PaginationElement from 'components/PaginationElement';
+// import PaginationElement from 'components/PaginationElement';
 import Spinner from 'components/Spinner';
 import Notification from 'components/Notification';
 
@@ -64,13 +64,13 @@ const MoviesPage = () => {
       {isSuccess && (
         <>
           <MoviesList movies={data.results} />
-          {data.results.length > 0 && (
+          {/* {data.results.length > 0 && (
             <PaginationElement
               count={data.total_pages}
               page={page}
               onChange={onChangePage}
             />
-          )}
+          )} */}
         </>
       )}
     </>

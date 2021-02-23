@@ -7,12 +7,13 @@ import { SizeProvider } from 'context/size/SizeContextProvider';
 import App from 'components/App';
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
       <SizeProvider>
         <App />
       </SizeProvider>
     </BrowserRouter>
-  </React.StrictMode>,
+  // </React.StrictMode >
+  ,
   document.getElementById('root'),
 );

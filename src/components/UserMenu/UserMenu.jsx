@@ -23,7 +23,7 @@ const UserMenu = ({children}) => {
   }, [isOpen, toggleMenu]);
       
   return (
-    <Transition in={isOpen} timeout={300} unmountOnExit nodeRef={elRef}>
+    <Transition in={isOpen} timeout={300} unmountOnExit>
       {(state) => (          
         <UserMenuStyled state={state} ref={elRef}>
           <IconButton

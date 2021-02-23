@@ -8,8 +8,8 @@ const Spinner = () => {
       <Loader
         type="Circles"
         color="rgb(248, 100, 14)"
-        height={100}
-        width={100}
+        height={50}
+        width={50}
       />
     </SpinnerStyled>
   );
