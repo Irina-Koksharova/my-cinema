@@ -60,31 +60,33 @@ const HomePage = () => {
 
   return (
     <>
-      <Main>
-        <Title title={'Trending today'} />
-        <SortSelector
-          options={options}
-          value={currentSelector}
-          onChange={onChangeSelector}
-        />
-        {isLoading && <Spinner />}
-        {isError && <Notification message={serverError} />}
-        {isSuccess && 
-          (data.results && (
-          <>
-            <MoviesList movies={data.results} />
-            <ButtonStyled>
-              <IconButton
-              aria-label='Вверх'
-              onClick={scrollTo}
-            >
-              <MdArrowUpward size={'2em'} color={'rgb(248, 100, 14)'} />
-            </IconButton>
-            </ButtonStyled>
-          </>
-          ))
-        }
-      </Main>
+      {isLoading && <Spinner />}
+      {isError && <Notification message={serverError} />}
+      {isSuccess && 
+        (
+        <Main>
+          <Title title={'Trending today'} />
+          <SortSelector
+            options={options}
+            value={currentSelector}
+            onChange={onChangeSelector}
+          />  
+          {data.results && (
+            <>
+              <MoviesList movies={data.results} />
+              <ButtonStyled>
+                <IconButton
+                  aria-label='Вверх'
+                  onClick={scrollTo}
+                >
+                  <MdArrowUpward size={'2em'} color={'rgb(248, 100, 14)'} />
+                </IconButton>
+              </ButtonStyled>
+            </>
+          )}
+        </Main>
+        )
+      }
       {isSuccess && (
         data.total_pages && (
           <Footer
@@ -96,5 +98,5 @@ const HomePage = () => {
     </>
   )
 };
-
+  
 export default HomePage;

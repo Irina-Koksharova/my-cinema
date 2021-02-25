@@ -4,8 +4,8 @@ const UserMenuStyled = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  width: 55%;
-  height: 100%;
+  width: 160px;
+  height: 150%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;

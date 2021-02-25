@@ -10,6 +10,7 @@ margin: 0;
 padding: 0;
 border: none;
 outline: none;
-background-color: transparent`;
+background-color: transparent;
+cursor: pointer;`;
 
 export {ButtonStyled}

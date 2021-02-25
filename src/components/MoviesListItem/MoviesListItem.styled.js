@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { breakpoints } from 'styles/variables';
+
+const { main } = breakpoints;
 
 const ImageContainerStyled = styled.div`
   height: 300px;
@@ -20,6 +23,10 @@ const TitleStyled = styled.p`
   margin: 0;
   color: rgb(85, 83, 83);
   font-size: 20px;
-  font-weight: 600;`;
+  font-weight: 600;
+  
+  @media screen and (min-width: ${main.decktop}px) {
+	 color: inherit;
+}`;
 
 export { ImageContainerStyled, ImageStyled, TitleContainerStyled, TitleStyled };
