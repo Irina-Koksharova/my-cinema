@@ -1,8 +1,8 @@
 import { MainStyled } from './Main.styled';
 
-const Main = ({children}) => {
+const Main = ({style, children}) => {
     return (
-        <MainStyled>{children}</MainStyled>
+        <MainStyled style={style}>{children}</MainStyled>
     )
 }
 

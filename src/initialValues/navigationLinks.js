@@ -9,7 +9,7 @@ const navigationLinks = [
   },
   {
     name: 'TV',
-    link: '/TV',
+    link: '/tv',
   },
 ];
 

@@ -54,8 +54,8 @@ const PaginationEl = ({ count, page, onChange }) => {
       page={page}
       defaultPage={1}
       boundaryCount={1}
-      showFirstButton={width < breakpoints.secondary.tablet ? false : true}
-      showLastButton={width < breakpoints.secondary.tablet ? false : true}
+      showFirstButton={width < breakpoints.main.tablet ? false : true}
+      showLastButton={width < breakpoints.main.tablet ? false : true}
       onChange={onHandlePageChange}
       shape="rounded"
       classes={{ root: classes.element }}

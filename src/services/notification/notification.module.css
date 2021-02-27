@@ -1,21 +1,7 @@
-.error {
-  top: 300px;
-  right: 900px;
-  width: 600px;
-  text-align: center;
-  background-color: #8a648823;
-  font-size: 18px;
-  font-weight: 600;
-  color: #9b0633;
-}
-
 .notify {
-  top: 700px;
-  right: 700px;
-  width: 600px;
   text-align: center;
   background-color: #8a648823;
-  font-size: 18px;
-  font-weight: 600;
-  color: #9b0633;
+  font-size: 14px;
+  font-weight: 500;
+  color: red;
 }

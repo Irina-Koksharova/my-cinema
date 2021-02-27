@@ -4,7 +4,7 @@ import { ListStyled, ItemStyled, LinkStyled } from './MoviesList.styled';
 import MoviesListItem from 'components/MoviesListItem';
 import {
   clientErrorInvalidQuery,
-  showError,
+  showNotification,
 } from 'services/notification/notification';
 
 const MoviesList = ({ movies }) => {
@@ -12,7 +12,7 @@ const MoviesList = ({ movies }) => {
 
   useEffect(() => {
     if (movies.length === 0) {
-      showError(clientErrorInvalidQuery);
+      showNotification(clientErrorInvalidQuery);
     }
   }, [movies.length]);
 
@@ -21,7 +21,9 @@ const MoviesList = ({ movies }) => {
   };
 
   return (
-    <ListStyled>
+    (
+      movies.length > 0 && (
+      <ListStyled>
       {movies.map(
         ({
           id,
@@ -54,6 +56,7 @@ const MoviesList = ({ movies }) => {
         ),
       )}
     </ListStyled>
+    ))
   );
 };
 

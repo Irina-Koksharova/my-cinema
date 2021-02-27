@@ -7,4 +7,4 @@ padding: 20px;
 background: whitesmoke;
 `;
 
-export {MainStyled}
+export { MainStyled };

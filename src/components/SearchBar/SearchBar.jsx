@@ -1,9 +1,12 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
-import { IconContext } from 'react-icons';
-import s from './SearchBar.module.css';
-// import Button from '../ButtonLarge';
+import IconButton from 'components/IconButton';
+import {
+  FormStyled,
+  LabelStyled,
+  InputStyled,
+  ContainerButtonStyled
+} from './SearchBar.styled';
 
 const SearchBar = ({ onSubmit }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -15,31 +18,22 @@ const SearchBar = ({ onSubmit }) => {
   };
 
   return (
-    <form className={s.form} onSubmit={handleSubmitForm}>
-      <label className={s.label}>
-        <input
-          className={s.input}
+    <FormStyled onSubmit={handleSubmitForm}>
+      <LabelStyled>
+        <InputStyled
           value={searchQuery}
           onChange={e => {
             setSearchQuery(e.target.value);
           }}
-        ></input>
-      </label>
-
-      {/* <Button>
-        {
-          <IconContext.Provider value={{ className: `${s.reactIcons}` }}>
-            <FiSearch />
-          </IconContext.Provider>
-        }
-        Search
-      </Button> */}
-    </form>
+        ></InputStyled>
+      </LabelStyled>
+      <ContainerButtonStyled>
+        <IconButton>
+          <FiSearch size={'1.5em'} color={'rgb(248, 100, 14)'} />
+        </IconButton>
+      </ContainerButtonStyled>
+    </FormStyled>
   );
-};
-
-SearchBar.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export default SearchBar;

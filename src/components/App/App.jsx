@@ -12,7 +12,7 @@ const HomePage = lazy(() =>
 );
 
 const MoviesPage = lazy(() =>
-  import('views/MoviesPage.jsx' /* webpackChunkName: "movies-page" */),
+  import('views/MoviesPage/MoviesPage.jsx' /* webpackChunkName: "movies-page" */),
 );
 
 const queryClient = new QueryClient();
@@ -42,7 +42,7 @@ const App = () => {
           </Switch>
         </Suspense>
         
-        <ToastContainer autoClose={3000} />
+        <ToastContainer style={{position: 'static'}} autoClose={3000} />
       </Container>
       
      </QueryClientProvider>
