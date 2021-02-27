@@ -1,15 +1,29 @@
 import styled from 'styled-components';
+import { breakpoints } from 'styles/variables';
+
+const { main } = breakpoints;
 
 const FormStyled = styled.form`
  position: relative;
  margin-left: auto;
  margin-right: auto;
  width: 225px;
+
+  @media screen and (min-width: ${main.decktop}px) {
+	  display: flex;
+    justify-content: center;
+    width: 100%;
+	}
 `;
 
 const LabelStyled = styled.label`
   display: block;
-  height: 30px;`;
+  height: 30px;
+
+  @media screen and (min-width: ${main.decktop}px) {
+		min-height: 40px;
+    margin-right: 10px;
+	}`;
 
 const InputStyled = styled.input`
   width: 100%;
@@ -23,7 +37,12 @@ const InputStyled = styled.input`
   
   &:focus {
     transform: scale(1.01);
-  }`;
+  }
+  
+  @media screen and (min-width: ${main.decktop}px) {
+	  font-size: 20px;
+    padding: 8px;
+	}`;
 
 const ContainerButtonStyled = styled.div`
   position: absolute;

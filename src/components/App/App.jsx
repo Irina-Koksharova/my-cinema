@@ -42,7 +42,7 @@ const App = () => {
           </Switch>
         </Suspense>
         
-        <ToastContainer style={{position: 'static'}} autoClose={3000} />
+        <ToastContainer style={{position: 'static', width: '100%'}} autoClose={3000} />
       </Container>
       
      </QueryClientProvider>

@@ -15,10 +15,10 @@ a {
 }
 
 .Toastify {
-  position: absolute;
-  top: 50%;
+  position: fixed;
+  top: 170px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0%);
   width: 320px;
   height: 100px;
 }

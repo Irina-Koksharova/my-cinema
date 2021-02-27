@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { MdArrowUpward } from 'react-icons/md';
+import { FiSearch } from 'react-icons/fi';
 import { fetchSearchingShow } from 'services/api-movies';
 import { scrollTo } from 'services/scroll';
 import {
