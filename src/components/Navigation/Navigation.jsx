@@ -9,10 +9,10 @@ const Navigation = () => {
   return (
     <NavStyled>
       <ListStyled>
-        {navigationLinks.map(({ name, link }) => (
-          <li key={name}>
-                <StyledLink exact to={link} onClick={toggleMenu}>
-                    {name}
+        {Object.values(navigationLinks).map(link => (
+          <li key={link}>
+                <StyledLink exact to={`/${link.toLowerCase()}`} onClick={toggleMenu}>
+                    {link}
                 </StyledLink>
           </li>
         ))}

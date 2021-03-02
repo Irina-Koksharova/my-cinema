@@ -1,5 +1,5 @@
 import { imageURL } from 'initialValues/url';
-import { dateConversion } from 'services/date-conversion';
+import { dateConversion } from 'services/dateConversion';
 import {
   ImageContainerStyled,
   ImageStyled,

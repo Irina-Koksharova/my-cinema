@@ -51,4 +51,21 @@ const ContainerButtonStyled = styled.div`
   width: 20px;
   height: 20px`;
 
-export { FormStyled, LabelStyled, InputStyled, ContainerButtonStyled };
+const buttonStyle = {
+  display: 'flex',
+  justifyContent: 'space-around',
+  alignItems: 'center',
+  minWidth: '150px',
+  minHeight: '40px',
+  margin: 0,
+  padding: '5px 25px',
+  backgroundColor: 'rgb(248, 100, 14)',
+  color: 'white',
+  fontSize: '20px',
+  border: '2px solid rgb(248, 100, 14)',
+  borderRadius: '8px',
+  outline: 'none',
+  cursor: 'pointer',
+}
+
+export { FormStyled, LabelStyled, InputStyled, ContainerButtonStyled, buttonStyle };

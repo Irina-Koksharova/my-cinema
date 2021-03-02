@@ -5,6 +5,7 @@ import { LinkStyled, HeaderStyled } from './Header.styled';
 import { breakpoints } from 'styles/variables';
 import { sizeContext } from 'context/size/SizeContextProvider';
 import { menuContext } from 'context/menu/MenuContextProvider';
+import { navigationLinks } from 'initialValues/navigationLinks';
 import UserMenu from 'components/UserMenu';
 import Navigation from 'components/Navigation';
 import IconButton from 'components/IconButton';
@@ -17,11 +18,14 @@ const Header = () => {
     const { secondary } = breakpoints;
     
     useEffect(() => {
+        const {HOME, MOVIES} = navigationLinks
         if (location.pathname === '/') {
-            setCurrentLocation('home')
+            setCurrentLocation(HOME)
             return currentLocation
         }
-        setCurrentLocation(location.pathname.slice(1))
+        location.pathname.includes(MOVIES)
+            ? setCurrentLocation(location.pathname.slice(1, 7))
+            : setCurrentLocation(location.pathname.slice(1, 3).toUpperCase())
         return currentLocation
     }, [currentLocation, location.pathname])
         

@@ -1,16 +1,7 @@
-const navigationLinks = [
-  {
-    name: 'home',
-    link: '/',
-  },
-  {
-    name: 'movies',
-    link: '/movies',
-  },
-  {
-    name: 'TV',
-    link: '/tv',
-  },
-];
+const navigationLinks = {
+  HOME: 'home',
+  MOVIES: 'movies',
+  TV: 'TV'
+};
 
 export { navigationLinks };

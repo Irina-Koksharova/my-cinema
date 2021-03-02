@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { MdArrowUpward } from 'react-icons/md';
-import { fetchTrendingShow } from 'services/api-movies';
+import { fetchTrendingShow } from 'services/apiMovies';
 import { scrollTo } from 'services/scroll';
 import { options } from 'initialValues/selectorValues';
 import { serverError } from 'services/notification/notification';
@@ -21,7 +21,7 @@ const HomePage = () => {
   const history = useHistory();
   const location = useLocation();
   const currentSelector =
-    new URLSearchParams(location.search).get('selected') ?? options[0];
+    new URLSearchParams(location.search).get('selected') ?? options.ALL;
   const currentPage = new URLSearchParams(location.search).get('page') ?? page;
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const HomePage = () => {
     if (location.search === '') {
       history.push({
         ...location,
-        search: `selected=${options[0]}&page=${page}`,
+        search: `selected=${options.ALL}&page=${page}`,
       });
     }
   }, [currentPage, history, location, page]);

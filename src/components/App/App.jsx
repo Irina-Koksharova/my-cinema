@@ -15,6 +15,12 @@ const MoviesPage = lazy(() =>
   import('views/MoviesPage/MoviesPage.jsx' /* webpackChunkName: "movies-page" */),
 );
 
+const MovieDetailsPage = lazy(() =>
+  import(
+    'views/MovieDetailsPage' /* webpackChunkName: "movieDetails-page" */
+  ),
+);
+
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -37,6 +43,9 @@ const App = () => {
             </Route>
             <Route path="/tv" exact>
               <MoviesPage />
+            </Route>
+            <Route path="/movies/:movieId">
+              <MovieDetailsPage />
             </Route>
             <Redirect to="/" />
           </Switch>

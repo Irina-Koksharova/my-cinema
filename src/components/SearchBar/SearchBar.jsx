@@ -6,7 +6,8 @@ import {
   FormStyled,
   LabelStyled,
   InputStyled,
-  ContainerButtonStyled
+  ContainerButtonStyled,
+  buttonStyle
 } from './SearchBar.styled';
 import IconButton from 'components/IconButton';
 import Button from 'components/Button';
@@ -37,7 +38,7 @@ const SearchBar = ({ onSubmit }) => {
             <FiSearch size={'1.5em'} color={'rgb(248, 100, 14)'} />
           </IconButton>
         </ContainerButtonStyled>
-        : <Button>
+        : <Button style={buttonStyle}>
           Search
           <FiSearch size={'1.2em'} color={'rgb(255, 255, 255)'} />
         </Button>}
