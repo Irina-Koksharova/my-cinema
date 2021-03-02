@@ -1,8 +1,8 @@
 import TitleStyled from './Title.styled';
 
-const Title = ({ title }) => {
+const Title = ({ style, title }) => {
   return (
-    <TitleStyled id="title">
+    <TitleStyled id="title" style={style}>
       {title}
     </TitleStyled>
   );

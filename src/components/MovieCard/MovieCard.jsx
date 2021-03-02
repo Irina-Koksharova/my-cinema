@@ -51,7 +51,7 @@ const MovieCard = ({ movie, url }) => {
         <TextStyled>{getGenresNames(genres)}</TextStyled>
         <SubTitleStyled>Editional information</SubTitleStyled>
         <ListStyled>
-          {links.map(link => (
+          {Object.values(links).map(link => (
             <ItemStyled key={link}>
               <LinkStyled
                 to={{

@@ -4,7 +4,7 @@ import { breakpoints } from 'styles/variables';
 
 const { main } = breakpoints;
 
-const ContainerStyled = styled.div`
+const ContainerStyled = styled.section`
  @media screen and (min-width: ${main.tablet}px) {
 	display: flex;
   align-items: center;

@@ -13,12 +13,13 @@ import { links } from 'initialValues/editionalInfo';
 import { serverError } from 'services/notification/notification';
 import { buttonStyle } from './MovieDetailsPage.styled';
 import Main from 'components/Main';
-import Button from 'components/Button';
-import MovieCard from 'components/MovieCard';
 import Spinner from 'components/Spinner';
 import Notification from '../../components/Notification';
+import Button from 'components/Button';
+import MovieCard from 'components/MovieCard';
 
-// const Cast = lazy(() => import('../Cast' /* webpackChunkName: "cast-page" */));
+const Cast = lazy(() => import('views/Cast' /* webpackChunkName: "cast-page" */));
+
 // const Reviews = lazy(() =>
 //   import('../Reviews' /* webpackChunkName: "reviews-page" */),
 // );
@@ -55,18 +56,18 @@ const MovieDetailsPage = () => {
             {`<< back to ${url.slice(1, 7)}`}
           </Button>
           <MovieCard movie={data} url={url} />
+          <Suspense fallback={<Spinner />}>
+            <Switch>
+              <Route path={`${path}/${links.CAST}`}>
+                <Cast sectionTitle={links.CAST} movie={data} />
+              </Route>
+          {/* <Route path={`${path}/${links[1]}`}>
+                <Reviews sectionTitle={links[1]} movie={data} />
+              </Route> */}
+            </Switch>
+          </Suspense>
         </Main>
       )}
-      {/* <Suspense fallback={<Spinner />}>
-        <Switch>
-          <Route path={`${path}/${links[0]}`}>
-            <Cast sectionTitle={links[0]} movie={data} />
-          </Route>
-          <Route path={`${path}/${links[1]}`}>
-            <Reviews sectionTitle={links[1]} movie={data} />
-          </Route>
-        </Switch>
-      </Suspense> */}
     </>
   );
 };
