@@ -7,6 +7,7 @@ import {
     ContainerStyled,
     ContainerImageStyled,
     ImageStyled,
+    ContainerDescriptionStyled,
     TitleStyled,
     SubTitleStyled,
     TextStyled,
@@ -37,7 +38,7 @@ const MovieCard = ({ movie, url }) => {
           alt={title ?? original_name}
         />
       </ContainerImageStyled>
-      <div>
+      <ContainerDescriptionStyled>
         <TitleStyled>
           {title
             ? title + `${dateConversion(release_date)}`
@@ -68,7 +69,7 @@ const MovieCard = ({ movie, url }) => {
             </ItemStyled>
           ))}
         </ListStyled>
-      </div>
+      </ContainerDescriptionStyled>
     </ContainerStyled>
   );
 };

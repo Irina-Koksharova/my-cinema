@@ -21,6 +21,12 @@ const MovieDetailsPage = lazy(() =>
   ),
 );
 
+const TVDetailsPage = lazy(() =>
+  import(
+    'views/TVDetailsPage' /* webpackChunkName: "TVDetails-page" */
+  ),
+);
+
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -35,18 +41,27 @@ const App = () => {
 
         <Suspense fallback={<Spinner />}>
           <Switch>
+
             <Route path="/" exact>
               <HomePage />
             </Route>
+
             <Route path="/movies" exact>
               <MoviesPage />
             </Route>
+
             <Route path="/tv" exact>
               <MoviesPage />
             </Route>
+
             <Route path="/movies/:movieId">
               <MovieDetailsPage />
             </Route>
+
+            <Route path="/tv/:tvId">
+              <TVDetailsPage />
+            </Route>
+            
             <Redirect to="/" />
           </Switch>
         </Suspense>
