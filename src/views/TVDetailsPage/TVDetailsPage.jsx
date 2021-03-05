@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import {
   useParams,
   useRouteMatch,
@@ -11,6 +11,7 @@ import { useQuery } from 'react-query';
 import { fetchSelectedShow } from 'services/apiMovies';
 import { links } from 'initialValues/editionalInfo';
 import { serverError } from 'services/notification/notification';
+import { scrollTo } from 'services/scroll';
 import { buttonStyle } from './TVDetailsPage.styled';
 import Main from 'components/Main';
 import Button from 'components/Button';
@@ -18,16 +19,20 @@ import MovieCard from 'components/MovieCard';
 import Spinner from 'components/Spinner';
 import Notification from 'components/Notification';
 
-// const Cast = lazy(() => import('../Cast' /* webpackChunkName: "cast-page" */));
-// const Reviews = lazy(() =>
-//   import('../Reviews' /* webpackChunkName: "reviews-page" */),
-// );
+const Cast = lazy(() => import('views/Cast' /* webpackChunkName: "cast-page" */));
+
+const Reviews = lazy(() =>
+  import('views/Reviews' /* webpackChunkName: "reviews-page" */),
+);
 
 const TVDetailsPage = () => {
   const { tvId } = useParams();
   const { url, path } = useRouteMatch();
   const history = useHistory();
   const location = useLocation();
+  const [locationFrom] = useState(
+    () => location?.state?.from?.location ?? '/',
+  );
  
   const { isLoading, isError, isSuccess, data } = useQuery(
     ['selectedTV', tvId],
@@ -35,7 +40,8 @@ const TVDetailsPage = () => {
   );
 
   const onButtonGoBackClick = () => {
-    history.push(location?.state?.from?.location ?? '/');
+    history.push(locationFrom) 
+    scrollTo()
   };
 
   return (
@@ -56,19 +62,20 @@ const TVDetailsPage = () => {
             {`<< back to ${url.slice(1, 3)}`}
           </Button>
           <MovieCard movie={data} url={url} />
+          <Suspense fallback={<Spinner />}>
+            <Switch>
+              <Route path={`${path}/${links.CAST}`}>
+                <Cast sectionTitle={links.CAST} movie={data} />
+              </Route>
+              <Route path={`${path}/${links.REVIEWS}`}>
+                <Reviews sectionTitle={links.REVIEWS} movie={data} />
+              </Route>
+            </Switch>
+          </Suspense>
         </Main>
       )}
-      {/* <Suspense fallback={<Spinner />}>
-        <Switch>
-          <Route path={`${path}/${links[0]}`}>
-            <Cast sectionTitle={links[0]} movie={data} />
-          </Route>
-          <Route path={`${path}/${links[1]}`}>
-            <Reviews sectionTitle={links[1]} movie={data} />
-          </Route>
-        </Switch>
-      </Suspense> */}
     </>
   );
 };
+  
 export default TVDetailsPage;

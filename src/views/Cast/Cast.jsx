@@ -1,11 +1,18 @@
 import { useEffect } from 'react';
-import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { MdArrowUpward } from 'react-icons/md';
 import { fetchCast } from 'services/apiMovies';
 import { scrollTo, scrollElement } from 'services/scroll';
 import { serverError } from 'services/notification/notification';
-import { ContainerStyled, ListStyled, ListItemStyled, ButtonStyled, titleStyle, buttonStyle } from './Cast.styled';
+import {
+  ContainerStyled,
+  ListStyled,
+  ListItemStyled,
+  ButtonStyled,
+  titleStyle,
+  buttonStyle
+} from './Cast.styled';
 import Spinner from 'components/Spinner';
 import Notification from '../../components/Notification';
 import Button from 'components/Button';
@@ -16,7 +23,6 @@ import IconButton from 'components/IconButton';
 const Cast = ({ sectionTitle, movie }) => {
   const history = useHistory();
   const location = useLocation();
-  const { url } = useRouteMatch();
   const { title, id } = movie;
 
   const getPath = value => {
@@ -51,7 +57,7 @@ const Cast = ({ sectionTitle, movie }) => {
          <ContainerStyled>
          
          <Button id={'button'} style={buttonStyle} onClick={onButtonGoBackClick}>
-           {`<< back to ${url.slice(1, 6)}`}
+           {`<< back to "${movie.title || movie.name}"`}
          </Button>
          
          <Title style={titleStyle} title={`${sectionTitle} of "${title}"`} movie={movie} />

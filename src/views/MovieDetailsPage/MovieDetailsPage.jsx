@@ -21,9 +21,9 @@ import MovieCard from 'components/MovieCard';
 
 const Cast = lazy(() => import('views/Cast' /* webpackChunkName: "cast-page" */));
 
-// const Reviews = lazy(() =>
-//   import('../Reviews' /* webpackChunkName: "reviews-page" */),
-// );
+const Reviews = lazy(() =>
+  import('views/Reviews' /* webpackChunkName: "reviews-page" */),
+);
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -67,9 +67,9 @@ const MovieDetailsPage = () => {
               <Route path={`${path}/${links.CAST}`}>
                 <Cast sectionTitle={links.CAST} movie={data} />
               </Route>
-              {/* <Route path={`${path}/${links[1]}`}>
-                <Reviews sectionTitle={links[1]} movie={data} />
-              </Route> */}
+              <Route path={`${path}/${links.REVIEWS}`}>
+                <Reviews sectionTitle={links.REVIEWS} movie={data} />
+              </Route>
             </Switch>
           </Suspense>
         </Main>

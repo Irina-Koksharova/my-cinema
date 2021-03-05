@@ -71,6 +71,7 @@ const titleStyle = {
 
 const buttonStyle = {
   minWidth: '100px',
+  marginBottom: '10px',
   padding: '10px',
   color: 'rgb(248, 100, 14)',
   fontSize: '15px',
