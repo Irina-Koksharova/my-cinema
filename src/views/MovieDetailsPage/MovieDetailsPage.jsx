@@ -11,6 +11,7 @@ import { useQuery } from 'react-query';
 import { fetchSelectedShow } from 'services/apiMovies';
 import { links } from 'initialValues/editionalInfo';
 import { serverError } from 'services/notification/notification';
+import { scrollTo } from 'services/scroll';
 import { buttonStyle } from './MovieDetailsPage.styled';
 import Main from 'components/Main';
 import Spinner from 'components/Spinner';
@@ -29,14 +30,19 @@ const MovieDetailsPage = () => {
   const { url, path } = useRouteMatch();
   const history = useHistory();
   const location = useLocation();
-  const [locationFrom, setLocationFrom] = useState(
+  const [locationFrom] = useState(
     () => location?.state?.from?.location ?? '/',
   );
-
+  
   const { isLoading, isError, isSuccess, data } = useQuery(
     ['selectedMovie', movieId],
     () => fetchSelectedShow('movie', movieId),
   );
+
+  const onButtonGoBackClick = () => {
+    history.push(locationFrom) 
+    scrollTo()
+  };
 
   return (
     <>
@@ -52,7 +58,7 @@ const MovieDetailsPage = () => {
       
       {isSuccess && (
         <Main>
-          <Button style={buttonStyle} onClick={() => history.push(locationFrom)}>
+          <Button style={buttonStyle} onClick={onButtonGoBackClick}>
             {`<< back to ${url.slice(1, 7)}`}
           </Button>
           <MovieCard movie={data} url={url} />
@@ -61,13 +67,13 @@ const MovieDetailsPage = () => {
               <Route path={`${path}/${links.CAST}`}>
                 <Cast sectionTitle={links.CAST} movie={data} />
               </Route>
-          {/* <Route path={`${path}/${links[1]}`}>
+              {/* <Route path={`${path}/${links[1]}`}>
                 <Reviews sectionTitle={links[1]} movie={data} />
               </Route> */}
             </Switch>
           </Suspense>
         </Main>
-      )}
+        )}
     </>
   );
 };

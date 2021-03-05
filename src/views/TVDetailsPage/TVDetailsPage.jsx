@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import {
   useParams,
   useRouteMatch,
@@ -28,14 +28,15 @@ const TVDetailsPage = () => {
   const { url, path } = useRouteMatch();
   const history = useHistory();
   const location = useLocation();
-  const [locationFrom, setLocationFrom] = useState(
-    () => location?.state?.from?.location ?? '/',
-  );
-
+ 
   const { isLoading, isError, isSuccess, data } = useQuery(
     ['selectedTV', tvId],
     () => fetchSelectedShow('tv', tvId),
   );
+
+  const onButtonGoBackClick = () => {
+    history.push(location?.state?.from?.location ?? '/');
+  };
 
   return (
     <>
@@ -51,7 +52,7 @@ const TVDetailsPage = () => {
           
       {isSuccess && (
         <Main>
-          <Button style={buttonStyle} onClick={() => history.push(locationFrom)}>
+          <Button style={buttonStyle} onClick={onButtonGoBackClick}>
             {`<< back to ${url.slice(1, 3)}`}
           </Button>
           <MovieCard movie={data} url={url} />
