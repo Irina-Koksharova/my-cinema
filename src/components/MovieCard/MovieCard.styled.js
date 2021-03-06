@@ -70,7 +70,7 @@ const TextStyled = styled.p`
  letter-spacing: 0.4px;
 
  @media screen and (min-width: ${main.decktop}px) {
-   font-size: 18px;
+   font-size: 16px;
  } 
 `;
 
@@ -107,7 +107,7 @@ const LinkStyled = styled(NavLink)`
 
  @media screen and (min-width: ${main.decktop}px) {
    min-width: 100px;
-   font-size: 20px;
+   font-size: 16px;
  }
 `;
 

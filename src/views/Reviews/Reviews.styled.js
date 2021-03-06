@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { breakpoints } from 'styles/variables';
 
-const { main, secondary } = breakpoints;
+const { main } = breakpoints;
 
 const ContainerStyled = styled.section`
   margin: 20px 0px 0px;
@@ -40,9 +40,24 @@ const titleStyle = {
     textTransform: 'capitalize'
 }
 
+const buttonSwitchStyle = {
+  display: 'block',
+  minWidth: '100px',
+  margin: '10px auto 0px',
+  padding: '10px',
+  color: 'white',
+  fontSize: '15px',
+  fontStyle: 'italic',
+  textAlign: 'center',
+  backgroundColor: 'rgb(248, 100, 14)',
+  border: 'none',
+  outline: 'none',
+  borderRadius: '8px',
+  cursor: 'pointer'
+}
+
 const buttonStyle = {
   minWidth: '100px',
-  marginBottom: '10px',
   padding: '10px',
   color: 'rgb(248, 100, 14)',
   fontSize: '15px',
@@ -56,4 +71,11 @@ const buttonStyle = {
   cursor: 'pointer'
 }
 
-export { ContainerStyled, ButtonStyled, ListStyled, titleStyle, buttonStyle }
+export {
+  ContainerStyled,
+  ButtonStyled,
+  ListStyled,
+  titleStyle,
+  buttonSwitchStyle,
+  buttonStyle
+}

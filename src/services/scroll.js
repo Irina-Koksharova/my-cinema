@@ -1,4 +1,4 @@
-const scrollElement = id => {
+const scrollToElement = id => {
   const positionY = document.getElementById(`${id}`).offsetTop;
   window.scrollTo({
     top: positionY,
@@ -6,11 +6,11 @@ const scrollElement = id => {
   });
 };
 
-const scrollTo = () => {
+const scrollTop = () => {
   window.scrollTo({
     top: 0,
     behavior: 'smooth',
   });
 };
 
-export { scrollElement, scrollTo };
+export { scrollToElement, scrollTop };

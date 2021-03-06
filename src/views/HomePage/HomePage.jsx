@@ -3,7 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { MdArrowUpward } from 'react-icons/md';
 import { fetchTrendingShow } from 'services/apiMovies';
-import { scrollTo } from 'services/scroll';
+import { scrollTop } from 'services/scroll';
 import { options } from 'initialValues/selectorValues';
 import { serverError } from 'services/notification/notification';
 import { ButtonStyled } from './HomePage.styled';
@@ -55,7 +55,7 @@ const HomePage = () => {
         'selected',
       )}&page=${value}`,
     });
-    scrollTo();
+    scrollTop();
   };
 
   return (
@@ -85,7 +85,7 @@ const HomePage = () => {
                 <ButtonStyled>
                   <IconButton
                     aria-label='Вверх'
-                    onClick={scrollTo}
+                    onClick={scrollTop}
                   >
                     <MdArrowUpward size={'2em'} color={'rgb(248, 100, 14)'} />
                   </IconButton>

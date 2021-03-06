@@ -3,7 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { MdArrowUpward } from 'react-icons/md';
 import { fetchCast } from 'services/apiMovies';
-import { scrollTo, scrollElement } from 'services/scroll';
+import { scrollToElement, scrollTop } from 'services/scroll';
 import { serverError } from 'services/notification/notification';
 import {
   ContainerStyled,
@@ -14,7 +14,7 @@ import {
   buttonStyle
 } from './Cast.styled';
 import Spinner from 'components/Spinner';
-import Notification from '../../components/Notification';
+import Notification from 'components/Notification';
 import Button from 'components/Button';
 import Title from 'components/Title';
 import ActorCard from 'components/ActorCard';
@@ -38,13 +38,13 @@ const Cast = ({ sectionTitle, movie }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      scrollElement('button')
+      scrollToElement('button')
     }
   }, [isSuccess]);
 
   const onButtonGoBackClick = () => {
     history.push(location?.state?.from?.location ?? '/');
-    scrollTo()
+    scrollTop()
   };
 
    return (
@@ -76,7 +76,7 @@ const Cast = ({ sectionTitle, movie }) => {
          <ButtonStyled>
            <IconButton
              aria-label='Вверх'
-             onClick={scrollTo}
+             onClick={scrollTop}
            >
              <MdArrowUpward size={'2em'} color={'rgb(248, 100, 14)'} />
            </IconButton>

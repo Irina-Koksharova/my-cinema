@@ -3,7 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { MdArrowUpward } from 'react-icons/md';
 import { fetchSearchingShow } from 'services/apiMovies';
-import { scrollTo } from 'services/scroll';
+import { scrollTop } from 'services/scroll';
 import {
   clientErrorEmptyQuery,
   serverError,
@@ -50,7 +50,7 @@ const MoviesPage = () => {
   };
 
   const onChangePage = value => {
-    scrollTo();
+    scrollTop();
     setPage(value);
     history.push({
       ...location,
@@ -90,7 +90,7 @@ const MoviesPage = () => {
               <ButtonStyled>
                 <IconButton
                   aria-label='Вверх'
-                  onClick={scrollTo}
+                  onClick={scrollTop}
                 >
                   <MdArrowUpward size={'2em'} color={'rgb(248, 100, 14)'} />
                 </IconButton>

@@ -1,7 +1,7 @@
-import s from './Notification.module.css';
+import { TextStyled } from './Notification.styled';
 
 const Notification = ({ message }) => {
-  return <h1 className={s.notification}>{message}</h1>;
+  return <TextStyled>{message}</TextStyled>;
 };
 
 export default Notification;

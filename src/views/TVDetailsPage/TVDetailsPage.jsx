@@ -11,7 +11,7 @@ import { useQuery } from 'react-query';
 import { fetchSelectedShow } from 'services/apiMovies';
 import { links } from 'initialValues/editionalInfo';
 import { serverError } from 'services/notification/notification';
-import { scrollTo } from 'services/scroll';
+import { scrollTop } from 'services/scroll';
 import { buttonStyle } from './TVDetailsPage.styled';
 import Main from 'components/Main';
 import Button from 'components/Button';
@@ -41,7 +41,7 @@ const TVDetailsPage = () => {
 
   const onButtonGoBackClick = () => {
     history.push(locationFrom) 
-    scrollTo()
+    scrollTop()
   };
 
   return (
