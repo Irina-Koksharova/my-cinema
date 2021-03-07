@@ -48,14 +48,14 @@ const TVDetailsPage = () => {
     <>
       {isLoading &&
         <Main style={{ background: 'transparent' }}>
-          <Spinner />
+        <Spinner />
         </Main>}
-      
+            
       {isError &&
         <Main style={{ background: 'transparent' }}>
-          <Notification message={serverError} />
-              </Main>}
-          
+        <Notification message={serverError} />
+        </Main>}
+                
       {isSuccess && (
         <Main>
           <Button style={buttonStyle} onClick={onButtonGoBackClick}>

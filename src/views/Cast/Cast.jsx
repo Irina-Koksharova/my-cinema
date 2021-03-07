@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { MdArrowUpward } from 'react-icons/md';
 import { fetchCast } from 'services/apiMovies';
@@ -25,6 +25,7 @@ const Cast = ({ sectionTitle, movie }) => {
   const [buttonName, setButtonName] = useState('Show more');
   const history = useHistory();
   const location = useLocation();
+  const { url, path } = useRouteMatch();
   const { title, id } = movie;
 
   const getPath = value => {
@@ -50,13 +51,11 @@ const Cast = ({ sectionTitle, movie }) => {
         e.target.previousSibling.style.overflow = 'visible';
         e.target.previousSibling.style.maxHeight = '100%';
         setButtonName('Hide');
-        scrollToElement('button');
         break;
       case 'Hide':
         e.target.previousSibling.style.overflow = 'hidden';
-        e.target.previousSibling.style.maxHeight = '600px';
+        e.target.previousSibling.style.maxHeight = '75vh';
         setButtonName('Show more');
-        scrollToElement('button');
         break;
       default:
         return;
@@ -64,7 +63,9 @@ const Cast = ({ sectionTitle, movie }) => {
   };
 
   const onButtonGoBackClick = () => {
-    history.push(location?.state?.from?.location ?? '/');
+    path.includes('cast')
+      ? history.push(url.slice(0, -5))
+      : history.push(url.slice(0, -8))
     scrollTop()
   };
 
@@ -96,7 +97,7 @@ const Cast = ({ sectionTitle, movie }) => {
                  </ListItemStyled>
                ))}
              </ListStyled>
-             {data.cast.length > 10 && (
+             {data.cast.length > 5 && (
                <>
                <Button style={buttonSwitchStyle} onClick={onButtonSwitchClick}>{buttonName}</Button>
 

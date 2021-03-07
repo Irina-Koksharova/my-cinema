@@ -10,7 +10,7 @@ const ContainerStyled = styled.section`
 const ListStyled = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  max-height: 600px;
+  max-height: 75vh;
   overflow: hidden;
   `;
 
@@ -74,7 +74,7 @@ const titleStyle = {
 const buttonSwitchStyle = {
   display: 'block',
   minWidth: '100px',
-  margin: '0px auto',
+  margin: '10px auto 0px',
   padding: '10px',
   color: 'white',
   fontSize: '15px',

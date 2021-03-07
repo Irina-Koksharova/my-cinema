@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from 'react';
+import { useState, useRef, lazy, Suspense } from 'react';
 import {
   useParams,
   useRouteMatch,
@@ -33,7 +33,7 @@ const MovieDetailsPage = () => {
   const [locationFrom] = useState(
     () => location?.state?.from?.location ?? '/',
   );
-  
+
   const { isLoading, isError, isSuccess, data } = useQuery(
     ['selectedMovie', movieId],
     () => fetchSelectedShow('movie', movieId),
@@ -48,14 +48,14 @@ const MovieDetailsPage = () => {
     <>
       {isLoading &&
         <Main style={{ background: 'transparent' }}>
-          <Spinner />
+        <Spinner />
         </Main>}
-      
+            
       {isError &&
         <Main style={{ background: 'transparent' }}>
-          <Notification message={serverError} />
+        <Notification message={serverError} />
         </Main>}
-      
+            
       {isSuccess && (
         <Main>
           <Button style={buttonStyle} onClick={onButtonGoBackClick}>
