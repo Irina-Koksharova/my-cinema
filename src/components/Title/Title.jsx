@@ -2,7 +2,7 @@ import TitleStyled from './Title.styled';
 
 const Title = ({ style, title }) => {
   return (
-    <TitleStyled id="title" style={style}>
+    <TitleStyled style={style}>
       {title}
     </TitleStyled>
   );

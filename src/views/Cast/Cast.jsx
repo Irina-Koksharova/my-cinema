@@ -1,16 +1,17 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { MdArrowUpward } from 'react-icons/md';
 import { fetchCast } from 'services/apiMovies';
 import { scrollToElement, scrollTop } from 'services/scroll';
-import { serverError } from 'services/notification/notification';
+import { noCast, serverError } from 'initialValues/messages';
 import {
   ContainerStyled,
   ListStyled,
   ListItemStyled,
   ButtonStyled,
   titleStyle,
+  buttonSwitchStyle,
   buttonStyle
 } from './Cast.styled';
 import Spinner from 'components/Spinner';
@@ -21,6 +22,7 @@ import ActorCard from 'components/ActorCard';
 import IconButton from 'components/IconButton';
 
 const Cast = ({ sectionTitle, movie }) => {
+  const [buttonName, setButtonName] = useState('Show more');
   const history = useHistory();
   const location = useLocation();
   const { title, id } = movie;
@@ -42,6 +44,25 @@ const Cast = ({ sectionTitle, movie }) => {
     }
   }, [isSuccess]);
 
+  const onButtonSwitchClick = e => {
+    switch (buttonName) {
+      case 'Show more':
+        e.target.previousSibling.style.overflow = 'visible';
+        e.target.previousSibling.style.maxHeight = '100%';
+        setButtonName('Hide');
+        scrollToElement('button');
+        break;
+      case 'Hide':
+        e.target.previousSibling.style.overflow = 'hidden';
+        e.target.previousSibling.style.maxHeight = '600px';
+        setButtonName('Show more');
+        scrollToElement('button');
+        break;
+      default:
+        return;
+    }
+  };
+
   const onButtonGoBackClick = () => {
     history.push(location?.state?.from?.location ?? '/');
     scrollTop()
@@ -56,31 +77,41 @@ const Cast = ({ sectionTitle, movie }) => {
       {isSuccess && 
          <ContainerStyled>
          
-         <Button id={'button'} style={buttonStyle} onClick={onButtonGoBackClick}>
+         <Button id='button' style={buttonStyle} onClick={onButtonGoBackClick}>
            {`<< back to "${movie.title || movie.name}"`}
          </Button>
-         
-         <Title style={titleStyle} title={`${sectionTitle} of "${title}"`} movie={movie} />
-         <ListStyled>
-           {data.cast.map(({ id, profile_path, original_name, character }) => (
-             <ListItemStyled key={id}>
-               <ActorCard
-                 image={profile_path}
-                 name={original_name}
-                 character={character}
-               />
-             </ListItemStyled>
-           ))}
-         </ListStyled>
 
-         <ButtonStyled>
-           <IconButton
-             aria-label='Вверх'
-             onClick={scrollTop}
-           >
-             <MdArrowUpward size={'2em'} color={'rgb(248, 100, 14)'} />
-           </IconButton>
-         </ButtonStyled>
+         {data.cast.length === 0
+           ? <Notification message={noCast} />  
+           : <>
+             <Title style={titleStyle} title={`${sectionTitle} of "${movie.title || movie.name}"`} movie={movie} />
+             <ListStyled>
+               {data.cast.map(({ id, profile_path, original_name, character }) => (
+                 <ListItemStyled key={id}>
+                   <ActorCard
+                     image={profile_path}
+                     name={original_name}
+                     character={character}
+                   />
+                 </ListItemStyled>
+               ))}
+             </ListStyled>
+             {data.cast.length > 10 && (
+               <>
+               <Button style={buttonSwitchStyle} onClick={onButtonSwitchClick}>{buttonName}</Button>
+
+                 <ButtonStyled>
+                   <IconButton
+                     aria-label='Вверх'
+                     onClick={scrollTop}
+                   >
+                     <MdArrowUpward size={'2em'} color={'rgb(248, 100, 14)'} />
+                   </IconButton>
+                 </ButtonStyled>
+               </>
+             )}
+           </>
+         }
 
          </ContainerStyled>
        }

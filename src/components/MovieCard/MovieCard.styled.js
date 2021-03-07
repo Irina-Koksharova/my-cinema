@@ -23,7 +23,7 @@ const ContainerImageStyled = styled.div`
  @media screen and (min-width: ${main.tablet}px) {
    min-width: 300px;
    height: 450px;
-   margin-right: 50px;
+   margin: 0px 50px 0px;
  }
 `;
 

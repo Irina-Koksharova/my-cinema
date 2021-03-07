@@ -10,7 +10,7 @@ import {
 import { useQuery } from 'react-query';
 import { fetchSelectedShow } from 'services/apiMovies';
 import { links } from 'initialValues/editionalInfo';
-import { serverError } from 'services/notification/notification';
+import { serverError } from 'initialValues/messages';
 import { scrollTop } from 'services/scroll';
 import { buttonStyle } from './TVDetailsPage.styled';
 import Main from 'components/Main';

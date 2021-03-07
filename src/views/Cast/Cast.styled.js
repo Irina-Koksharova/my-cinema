@@ -10,6 +10,8 @@ const ContainerStyled = styled.section`
 const ListStyled = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  max-height: 600px;
+  overflow: hidden;
   `;
 
 const ListItemStyled = styled.li`
@@ -69,6 +71,22 @@ const titleStyle = {
     textTransform: 'capitalize'
 }
 
+const buttonSwitchStyle = {
+  display: 'block',
+  minWidth: '100px',
+  margin: '0px auto',
+  padding: '10px',
+  color: 'white',
+  fontSize: '15px',
+  fontStyle: 'italic',
+  textAlign: 'center',
+  backgroundColor: 'rgb(248, 100, 14)',
+  border: 'none',
+  outline: 'none',
+  borderRadius: '8px',
+  cursor: 'pointer'
+}
+
 const buttonStyle = {
   minWidth: '100px',
   marginBottom: '10px',
@@ -85,4 +103,12 @@ const buttonStyle = {
   cursor: 'pointer'
 }
 
-export { ContainerStyled, ListStyled, ListItemStyled, ButtonStyled, titleStyle, buttonStyle }
+export {
+  ContainerStyled,
+  ListStyled,
+  ListItemStyled,
+  ButtonStyled,
+  titleStyle,
+  buttonSwitchStyle,
+  buttonStyle
+}

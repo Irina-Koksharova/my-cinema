@@ -30,7 +30,7 @@ const ListStyled = styled.ul`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 23;
+  -webkit-line-clamp: 22;
   -webkit-box-orient: vertical;`;
 
 const titleStyle = {

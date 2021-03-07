@@ -2,10 +2,8 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ListStyled, ItemStyled, LinkStyled } from './MoviesList.styled';
 import MoviesListItem from 'components/MoviesListItem';
-import {
-  clientErrorInvalidQuery,
-  showNotification,
-} from 'services/notification/notification';
+import { showNotification } from 'services/notification/notification'; 
+import { clientErrorInvalidQuery } from 'initialValues/messages';
 
 const MoviesList = ({ movies }) => {
   const location = useLocation();

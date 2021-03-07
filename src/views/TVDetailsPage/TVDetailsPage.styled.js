@@ -1,8 +1,6 @@
-// import styled from 'styled-components';
-
 const buttonStyle = {
   minWidth: '100px',
-  marginBottom: '25px',
+  marginBottom: '10px',
   padding: '10px',
   color: 'rgb(248, 100, 14)',
   fontSize: '16px',

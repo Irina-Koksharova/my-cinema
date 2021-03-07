@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { MdArrowUpward } from 'react-icons/md';
 import { fetchReviews } from 'services/apiMovies';
 import { scrollToElement, scrollTop } from 'services/scroll';
-import { noReviews, serverError} from 'services/notification/notification';
+import { noReviews, serverError } from 'initialValues/messages';
 import {
   ContainerStyled,
   ButtonStyled,
@@ -14,7 +14,7 @@ import {
   buttonStyle
 } from './Reviews.styled';
 import Spinner from 'components/Spinner';
-import Notification from '../../components/Notification';
+import Notification from 'components/Notification';
 import Button from 'components/Button';
 import Title from 'components/Title';
 import ReviewsCard from 'components/ReviewsCard';
@@ -39,14 +39,13 @@ const Reviews = ({ sectionTitle, movie }) => {
   );
 
   useEffect(() => {
-    if (isSuccess) {
+    if (reviewsLength) {
       scrollToElement('button')
     }
-  }, [isSuccess]);
-  
+  }, [reviewsLength]);
+    
   useEffect(() => {
     if (data) {
-      
       const content = data.results
         .map(({ author, content }) => author + content)
         .join('').length;
@@ -85,18 +84,15 @@ const Reviews = ({ sectionTitle, movie }) => {
       {isSuccess && (
         <ContainerStyled>
 
-          <Button id={'button'} style={buttonStyle} onClick={onButtonGoBackClick}>
-                {`<< back to "${movie.title || movie.name}"`}
-              </Button>
+          <Button id='button' style={buttonStyle} onClick={onButtonGoBackClick}>
+            {`<< back to "${movie.title || movie.name}"`}
+          </Button>
 
-          {reviewsLength === 0 && (
-            <Notification message={noReviews} />
-          )}
-          
-          {reviewsLength > 2500 && (
-            <>
+          {reviewsLength === 0
+            ? <Notification message={noReviews} />
+            : <>
               <Title style={titleStyle} title={`${sectionTitle} of "${movie.title || movie.name}"`} movie={movie} />
-
+                            
               <ListStyled>
                 {data.results.map(({ id, author, content }) => (
                   <li key={id}>
@@ -105,26 +101,27 @@ const Reviews = ({ sectionTitle, movie }) => {
                 ))}
               </ListStyled>
               
-              <Button style={buttonSwitchStyle} onClick={onButtonSwitchClick}>{buttonName}</Button>
-              <Button style={buttonStyle} onClick={onButtonGoBackClick}>
-                {`<< back to "${movie.title || movie.name}"`}
-              </Button>  
-              
-              <ButtonStyled>
-                <IconButton
-                  aria-label='Вверх'
-                  onClick={scrollTop}
-                >
-                  <MdArrowUpward size={'2em'} color={'rgb(248, 100, 14)'} />
-                </IconButton>
-              </ButtonStyled>
-            </>
-          )}
-                              
+              {reviewsLength > 2500 && (
+                <>
+                  <Button style={buttonSwitchStyle} onClick={onButtonSwitchClick}>{buttonName}</Button>
+                                                                
+                  <ButtonStyled>
+                    <IconButton
+                      aria-label='Вверх'
+                      onClick={scrollTop}
+                    >
+                      <MdArrowUpward size={'2em'} color={'rgb(248, 100, 14)'} />
+                    </IconButton>
+                  </ButtonStyled>
+                </>
+              )
+              }
+            </>}
+                                                  
         </ContainerStyled>
       )}
     </>
   )
 };
-
+  
 export default Reviews;

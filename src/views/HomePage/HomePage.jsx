@@ -5,7 +5,7 @@ import { MdArrowUpward } from 'react-icons/md';
 import { fetchTrendingShow } from 'services/apiMovies';
 import { scrollTop } from 'services/scroll';
 import { options } from 'initialValues/selectorValues';
-import { serverError } from 'services/notification/notification';
+import { serverError } from 'initialValues/messages';
 import { ButtonStyled } from './HomePage.styled';
 import Main from 'components/Main';
 import Spinner from 'components/Spinner';

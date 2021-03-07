@@ -4,11 +4,8 @@ import { useQuery } from 'react-query';
 import { MdArrowUpward } from 'react-icons/md';
 import { fetchSearchingShow } from 'services/apiMovies';
 import { scrollTop } from 'services/scroll';
-import {
-  clientErrorEmptyQuery,
-  serverError,
-  showNotification,
-} from 'services/notification/notification';
+import { showNotification } from 'services/notification/notification';
+import { clientErrorEmptyQuery, serverError } from 'initialValues/messages';
 import { ButtonStyled } from './MoviesPage.styled';
 import Main from 'components/Main';
 import SearchBar from 'components/SearchBar';
