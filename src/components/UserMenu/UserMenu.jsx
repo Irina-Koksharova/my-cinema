@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useRef, useContext } from 'react';
 import { Transition } from 'react-transition-group';
 import { IoMdClose } from 'react-icons/io';
@@ -27,7 +28,7 @@ const UserMenu = ({children}) => {
       {(state) => (          
         <UserMenuStyled state={state} ref={elRef}>
           <IconButton
-            aria-label='Закрыть меню'
+            aria-label='Close menu'
             onClick={toggleMenu}
           >
             <IoMdClose size={'2em'} color={'rgb(85, 83, 83)'}/>
@@ -38,5 +39,9 @@ const UserMenu = ({children}) => {
     </Transition>
   )   
 }
+
+UserMenu.propTypes = {
+  children: PropTypes.node.isRequired
+};
       
 export default UserMenu;

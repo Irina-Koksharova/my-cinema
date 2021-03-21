@@ -31,4 +31,9 @@ const TextStyled = styled.p`
 	font-size: 14px;
    }`;
 
-export {ContainerImageStyled, ImageStyled, NameStyled, TextStyled}
+export {
+  ContainerImageStyled,
+  ImageStyled,
+  NameStyled,
+  TextStyled
+}

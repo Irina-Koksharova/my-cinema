@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import { useQuery } from 'react-query';
@@ -78,14 +79,21 @@ const Cast = ({ sectionTitle, movie }) => {
       {isSuccess && 
          <ContainerStyled>
          
-         <Button id='button' style={buttonStyle} onClick={onButtonGoBackClick}>
+         <Button
+           id='button'
+           style={buttonStyle}
+           onClick={onButtonGoBackClick}
+           aria-label='Go back'>
            {`<< back to "${movie.title || movie.name}"`}
          </Button>
 
          {data.cast.length === 0
            ? <Notification message={noCast} />  
            : <>
-             <Title style={titleStyle} title={`${sectionTitle} of "${movie.title || movie.name}"`} movie={movie} />
+             <Title
+               style={titleStyle}
+               title={`${sectionTitle} of "${movie.title || movie.name}"`}
+               movie={movie} />
              <ListStyled>
                {data.cast.map(({ id, profile_path, original_name, character }) => (
                  <ListItemStyled key={id}>
@@ -99,11 +107,16 @@ const Cast = ({ sectionTitle, movie }) => {
              </ListStyled>
              {data.cast.length > 5 && (
                <>
-               <Button style={buttonSwitchStyle} onClick={onButtonSwitchClick}>{buttonName}</Button>
+                 <Button
+                   style={buttonSwitchStyle}
+                   onClick={onButtonSwitchClick}
+                   aria-label='Show more or hide'>
+                   {buttonName}
+                 </Button>
 
                  <ButtonStyled>
                    <IconButton
-                     aria-label='Вверх'
+                     aria-label='Up'
                      onClick={scrollTop}
                    >
                      <MdArrowUpward size={'2em'} color={'rgb(248, 100, 14)'} />
@@ -118,6 +131,11 @@ const Cast = ({ sectionTitle, movie }) => {
        }
      </>
   )
+};
+
+Cast.propTypes = {
+  sectionTitle: PropTypes.string.isRequired,
+  movie: PropTypes.object.isRequired
 };
 
 export default Cast;

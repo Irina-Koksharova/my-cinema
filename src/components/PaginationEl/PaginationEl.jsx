@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Pagination, PaginationItem } from '@material-ui/lab';
@@ -67,6 +68,12 @@ const PaginationEl = ({ count, page, onChange }) => {
       )}
     />
   );
+};
+
+PaginationEl.propTypes = {
+  count: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired
 };
 
 export default PaginationEl;

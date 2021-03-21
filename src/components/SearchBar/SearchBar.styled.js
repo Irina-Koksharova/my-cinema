@@ -68,4 +68,10 @@ const buttonStyle = {
   cursor: 'pointer',
 }
 
-export { FormStyled, LabelStyled, InputStyled, ContainerButtonStyled, buttonStyle };
+export {
+  FormStyled,
+  LabelStyled,
+  InputStyled,
+  ContainerButtonStyled,
+  buttonStyle
+};

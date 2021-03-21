@@ -86,7 +86,7 @@ const MoviesPage = () => {
               <MoviesList movies={data.results} />
               <ButtonStyled>
                 <IconButton
-                  aria-label='Вверх'
+                  aria-label='Up'
                   onClick={scrollTop}
                 >
                   <MdArrowUpward size={'2em'} color={'rgb(248, 100, 14)'} />

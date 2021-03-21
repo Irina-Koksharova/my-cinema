@@ -58,18 +58,25 @@ const TVDetailsPage = () => {
                 
       {isSuccess && (
         <Main>
-          <Button style={buttonStyle} onClick={onButtonGoBackClick}>
+          <Button
+            style={buttonStyle}
+            onClick={onButtonGoBackClick}
+            aria-label='Go back'>
             {`<< back to ${url.slice(1, 3)}`}
           </Button>
           <MovieCard movie={data} url={url} />
+
           <Suspense fallback={<Spinner />}>
             <Switch>
+
               <Route path={`${path}/${links.CAST}`}>
                 <Cast sectionTitle={links.CAST} movie={data} />
               </Route>
+
               <Route path={`${path}/${links.REVIEWS}`}>
                 <Reviews sectionTitle={links.REVIEWS} movie={data} />
               </Route>
+              
             </Switch>
           </Suspense>
         </Main>

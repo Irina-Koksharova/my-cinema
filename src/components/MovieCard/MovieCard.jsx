@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { imageURL } from 'initialValues/url';
 import { dateConversion } from 'services/dateConversion';
@@ -17,7 +18,7 @@ import {
 } from './MovieCard.styled';
 import defaultFoto from 'images/error.jpg';
 
-const MovieCard = ({ movie, url }) => {
+const MovieCard = ({ movie, url = null }) => {
   const location = useLocation();
   const {
     poster_path,
@@ -41,8 +42,8 @@ const MovieCard = ({ movie, url }) => {
       <ContainerDescriptionStyled>
         <TitleStyled>
           {title
-            ? title + `${dateConversion(release_date)}`
-            : original_name + `${dateConversion(first_air_date)}`}
+            ? title + `${dateConversion(release_date) || ''}`
+            : original_name + `${dateConversion(first_air_date) || ''}`}
         </TitleStyled>
         <SubTitleStyled>{`User score: ${vote_average * 10}%`}</SubTitleStyled>
         <SubTitleStyled>Overview</SubTitleStyled>
@@ -72,6 +73,11 @@ const MovieCard = ({ movie, url }) => {
       </ContainerDescriptionStyled>
     </ContainerStyled>
   );
+};
+
+MovieCard.propTypes = {
+  movie: PropTypes.object.isRequired,
+  url: PropTypes.string
 };
 
 export default MovieCard;

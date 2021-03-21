@@ -35,11 +35,11 @@ const Header = () => {
                 ? <>
                     <LinkStyled
                         href='#'
-                        aria-label='Ссылка на текущую страницу'>
+                        aria-label='Link to the current page'>
                         {currentLocation}
                     </LinkStyled>
                     <IconButton
-                        aria-label='Открыть меню'
+                        aria-label='Open menu'
                         onClick={toggleMenu}
                     >
                         <BiMenu size={'2em'} color={'rgb(85, 83, 83)'}/>

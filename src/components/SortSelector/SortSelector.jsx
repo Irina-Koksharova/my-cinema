@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -46,5 +47,11 @@ const SortSelector = ({ options, onChange, value }) => {
     </FormControl>   
   );
 }
+
+SortSelector.propTypes = {
+  options: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+};
   
 export default SortSelector;

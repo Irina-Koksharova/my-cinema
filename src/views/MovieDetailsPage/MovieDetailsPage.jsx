@@ -1,4 +1,4 @@
-import { useState, useRef, lazy, Suspense } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import {
   useParams,
   useRouteMatch,
@@ -15,7 +15,7 @@ import { scrollTop } from 'services/scroll';
 import { buttonStyle } from './MovieDetailsPage.styled';
 import Main from 'components/Main';
 import Spinner from 'components/Spinner';
-import Notification from '../../components/Notification';
+import Notification from 'components/Notification';
 import Button from 'components/Button';
 import MovieCard from 'components/MovieCard';
 
@@ -58,18 +58,25 @@ const MovieDetailsPage = () => {
             
       {isSuccess && (
         <Main>
-          <Button style={buttonStyle} onClick={onButtonGoBackClick}>
+          <Button
+            style={buttonStyle}
+            onClick={onButtonGoBackClick}
+            aria-label='Go back'>
             {`<< back to ${url.slice(1, 7)}`}
           </Button>
           <MovieCard movie={data} url={url} />
+
           <Suspense fallback={<Spinner />}>
             <Switch>
+
               <Route path={`${path}/${links.CAST}`}>
                 <Cast sectionTitle={links.CAST} movie={data} />
               </Route>
+
               <Route path={`${path}/${links.REVIEWS}`}>
                 <Reviews sectionTitle={links.REVIEWS} movie={data} />
               </Route>
+
             </Switch>
           </Suspense>
         </Main>

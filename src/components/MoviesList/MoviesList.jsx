@@ -1,13 +1,15 @@
+import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ListStyled, ItemStyled, LinkStyled } from './MoviesList.styled';
-import MoviesListItem from 'components/MoviesListItem';
 import { showNotification } from 'services/notification/notification'; 
 import { clientErrorInvalidQuery } from 'initialValues/messages';
+import { navigationLinks } from 'initialValues/navigationLinks';
+import MoviesListItem from 'components/MoviesListItem';
 
-const MoviesList = ({ movies }) => {
+const MoviesList = ({ movies = null }) => {
   const location = useLocation();
-
+  
   useEffect(() => {
     if (movies.length === 0) {
       showNotification(clientErrorInvalidQuery);
@@ -15,7 +17,9 @@ const MoviesList = ({ movies }) => {
   }, [movies.length]);
 
   const getPathName = value => {
-    return value ? 'movies' : 'tv';
+    return value
+      ? navigationLinks.MOVIES.toLowerCase()
+      : navigationLinks.TV.toLowerCase();
   };
 
   return (
@@ -56,6 +60,10 @@ const MoviesList = ({ movies }) => {
     </ListStyled>
     ))
   );
+};
+
+MoviesList.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default MoviesList;

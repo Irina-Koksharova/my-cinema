@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import { useQuery } from 'react-query';
@@ -86,14 +87,21 @@ const Reviews = ({ sectionTitle, movie }) => {
       {isSuccess && (
         <ContainerStyled>
 
-          <Button id='button' style={buttonStyle} onClick={onButtonGoBackClick}>
+          <Button
+            id='button'
+            style={buttonStyle}
+            onClick={onButtonGoBackClick}
+            aria-label='Go back'>
             {`<< back to "${movie.title || movie.name}"`}
           </Button>
 
           {reviewsLength === 0
             ? <Notification message={noReviews} />
             : <>
-              <Title style={titleStyle} title={`${sectionTitle} of "${movie.title || movie.name}"`} movie={movie} />
+              <Title
+                style={titleStyle}
+                title={`${sectionTitle} of "${movie.title || movie.name}"`}
+                movie={movie} />
                             
               <ListStyled>
                 {data.results.map(({ id, author, content }) => (
@@ -105,11 +113,16 @@ const Reviews = ({ sectionTitle, movie }) => {
               
               {reviewsLength > 2500 && (
                 <>
-                  <Button style={buttonSwitchStyle} onClick={onButtonSwitchClick}>{buttonName}</Button>
+                  <Button
+                    style={buttonSwitchStyle}
+                    onClick={onButtonSwitchClick}
+                    aria-label='Show more or hide'>
+                    {buttonName}
+                  </Button>
                                                                 
                   <ButtonStyled>
                     <IconButton
-                      aria-label='Вверх'
+                      aria-label='Up'
                       onClick={scrollTop}
                     >
                       <MdArrowUpward size={'2em'} color={'rgb(248, 100, 14)'} />
@@ -124,6 +137,11 @@ const Reviews = ({ sectionTitle, movie }) => {
       )}
     </>
   )
+};
+
+Reviews.propTypes = {
+  sectionTitle: PropTypes.string.isRequired,
+  movie: PropTypes.object.isRequired
 };
   
 export default Reviews;

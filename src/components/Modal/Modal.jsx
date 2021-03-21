@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { OverlayStyled, ModalStyled } from './Modal.styled';
 
 const menuModalRoot = document.querySelector('#root-menuModal');
 
-const Modal = ({ children, onClose }) => {
+const Modal = ({ children = null, onClose = () => null }) => {
   
   useEffect(() => {
     const handleKeyDown = e => {
@@ -31,6 +32,11 @@ const Modal = ({ children, onClose }) => {
     </OverlayStyled>,
     menuModalRoot
   );
+};
+
+Modal.propTypes = {
+  children: PropTypes.node,
+  onClick: PropTypes.func
 };
   
 export default Modal;

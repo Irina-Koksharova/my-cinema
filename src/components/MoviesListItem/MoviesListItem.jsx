@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { imageURL } from 'initialValues/url';
 import { dateConversion } from 'services/dateConversion';
 import {
@@ -9,11 +10,11 @@ import {
 import defaultFoto from 'images/error.jpg';
 
 const MoviesListItem = ({
-  image,
-  movieTitle,
-  tvTitle,
-  movieReleaseDate,
-  tvReleaseDate,
+  image = null,
+  movieTitle = '',
+  tvTitle = '',
+  movieReleaseDate = null,
+  tvReleaseDate = null,
 }) => {
   return (
     <>
@@ -26,12 +27,20 @@ const MoviesListItem = ({
       <TitleContainerStyled>
         <TitleStyled>
           {movieTitle
-            ? movieTitle + dateConversion(movieReleaseDate)
-            : tvTitle + dateConversion(tvReleaseDate)}
+            ? movieTitle + dateConversion(movieReleaseDate || '-')
+            : tvTitle + dateConversion(tvReleaseDate || '-')}
         </TitleStyled>
       </TitleContainerStyled>
     </>
   );
+};
+
+MoviesListItem.propTypes = {
+  image: PropTypes.string,
+  movieTitle: PropTypes.string,
+  tvTitle: PropTypes.string,
+  movieReleaseDate: PropTypes.string,
+  tvReleaseDate: PropTypes.string
 };
 
 export default MoviesListItem;
